@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   phone.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 16:51:43 by fmonbeig          #+#    #+#             */
-/*   Updated: 2021/12/29 12:21:05 by fmonbeig         ###   ########.fr       */
+/*   Created: 2021/12/29 12:26:18 by fmonbeig          #+#    #+#             */
+/*   Updated: 2021/12/29 17:23:09 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef PHONE_CLASS_HPP
+# define PHONE_CLASS_HPP
 
-void strUpper(char *str)
+class Contact
 {
-	int i;
+	public:
 
-	i = -1;
-	while(str[++i])
-		str[i] = toupper(str[i]);
-}
+		std::string	first_name;
+		std::string	last_name;
+		std::string	nickname;
+		int 		phone;
+		std::string	darkest_secret;
 
-int main (int argc, char **argv)
+		Contact(void);
+		~Contact(void);
+};
+
+class Phone_book
 {
-	int i;
+	public:
 
-	i = 0;
-	if (argc > 1)
-	{
-		while (++i < argc)
-		{
-			strUpper(argv[i]);
-			std::cout << argv[i] << " ";
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	return (0);
-}
+		Contact contact[8];
+		Phone_book(void);
+		~Phone_book(void);
+
+		void	exit(void);
+};
+
+#endif
