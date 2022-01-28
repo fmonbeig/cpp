@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 16:51:43 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/01/28 15:51:49 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/01/28 15:53:45 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/01/28 18:15:55 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
+
 #include <iostream>
+#include <string>
 
-void strUpper(char *str)
+class Contact
 {
-	int i;
+	public:
+		Contact(void);
+		~Contact(void);
 
-	i = -1;
-	while(str[++i])
-		str[i] = toupper(str[i]);
-}
+		void	set_information();
+		void	get_information() const;
 
-int main (int argc, char **argv)
-{
-	int i;
+	private:
+		std::string	_first_name;
+		std::string	_last_name;
+		std::string	_nick_name;
+		std::string	_darkest_secret;
+		int 		_phone;
 
-	i = 0;
-	if (argc > 1)
-	{
-		while (++i < argc)
-		{
-			strUpper(argv[i]);
-			std::cout << argv[i];
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	return (0);
-}
+};
+
+#endif

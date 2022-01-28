@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phone.cpp                                          :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/29 12:26:18 by fmonbeig          #+#    #+#             */
-/*   Updated: 2021/12/29 17:53:55 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/01/28 15:53:36 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/01/28 18:22:10 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "phone.class.hpp"
+#include "Contact.hpp"
 
 Contact::Contact(void)
 {
@@ -25,20 +24,21 @@ Contact::~Contact(void)
 	return ;
 }
 
-
-Phone_book::Phone_book(void)
+void Contact::set_information() // souci sur les telephone
 {
-	std::cout << "Constructor called (phone_book)" << std::endl;
-	return ;
+	std::cout << "\n\e[1;37mFirst Name: \e[0m" << std::endl;
+	std::cin >> _first_name;
+	std::cout << "\n\e[1;37mLast Name: \e[0m";
+	std::getline(std::cin, _last_name);
+	std::cout << "\n\e[1;37mNick Name: \e[0m";
+	std::getline(std::cin, _nick_name);
+	std::cout << "\n\e[1;37mDarket Secret: \e[0m";
+	std::getline(std::cin, _darkest_secret);
+	// std::cout << "\n\e[1;37mPhone number: \e[0m";
+	// std::getline(std::cin, _phone);
 }
 
-Phone_book::~Phone_book(void)
+void Contact::get_information() const
 {
-	std::cout << "Destructor called (phone_book)" << std::endl;
-	return ;
-}
-
-void Phone_book::exit(void)
-{
-	_Exit(0);
+	std::cout << _first_name << std::endl;
 }

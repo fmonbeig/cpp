@@ -6,7 +6,7 @@
 #    By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 14:48:02 by fmonbeig          #+#    #+#              #
-#    Updated: 2021/12/29 16:39:55 by fmonbeig         ###   ########.fr        #
+#    Updated: 2022/01/28 17:46:05 by fmonbeig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ OBJ_DIR			= ./obj/
 
 SRC_LIST		=\
 					main.cpp\
-					phone.cpp\
+					Phone.cpp\
+					Contact.cpp\
 
 
 SRC				= $(SRC_LIST)
