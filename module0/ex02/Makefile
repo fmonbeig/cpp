@@ -6,7 +6,7 @@
 #    By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 14:48:02 by fmonbeig          #+#    #+#              #
-#    Updated: 2022/01/31 18:37:43 by fmonbeig         ###   ########.fr        #
+#    Updated: 2022/02/01 11:26:23 by fmonbeig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,31 +20,28 @@ FLAGS			= -Wall -Werror -Wextra -g -std=c++98 -pedantic
 
 OBJ_DIR			= ./obj/
 
-SRC_LIST		=\
-					test.cpp\
+SRC_LIST		=	test.cpp\
 					Account.cpp\
 
 SRC				= $(SRC_LIST)
 
 OBJ				= $(SRC:%.cpp=$(OBJ_DIR)%.o)
 
-$(NAME):		$(OBJ)
+all:			$(NAME)
+
+$(NAME):		$(OBJ_DIR) $(OBJ)
 				@/bin/echo -e "\n💫 Linking everything..."
 				@$(CC) $(FLAGS) -o $(NAME) $(OBJ)
 				@$(call filename,"'$(NAME)'")
 				@$(call green," successfully created. ✅")
 				@/bin/echo -e "\n\n🚀 You're ready to go. Enjoy the ride!"
 
-$(OBJ):			 $(OBJ_DIR)
-
-$(OBJ_DIR)%.o:  %.cpp
+$(OBJ_DIR)%.o:  %.cpp Makefile
 				@echo "🏗  Compiling $<..."
 				@$(CC) $(CC_FLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 				@mkdir -p $(OBJ_DIR)
-
-all:			$(NAME)
 
 clean:
 				@/bin/echo "💦 Cleaning..."
