@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 12:19:35 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/01/31 15:39:37 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/01 10:50:40 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 #include <string>
 #include "Phone.hpp"
 #include "Contact.hpp"
-
-// comment on fait pour mettre une string en upper facilement et pour utiliser une string
-// pourquoi le destructeur n'est il pas appelé lors du exit ?
 
 void do_cmd(std::string user_cmd, Phone_book *N3310)
 {
