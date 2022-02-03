@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:30:01 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/03 11:47:50 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:26:09 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@ static void	ft_replace(std::ifstream& file, std::string s1, std::string s2, std:
 	std::string		line;
 	std::ofstream	outfile(OutfileName.c_str());
 	size_t			pos;
+	size_t			i;
 
+	if (s1.empty())
+	{
+		std::cerr << "String 1 is empty\n";
+		return ;
+	}
 	if(outfile.fail())
 	{
 			std::cerr << "Can't create the file\n";
@@ -30,10 +36,12 @@ static void	ft_replace(std::ifstream& file, std::string s1, std::string s2, std:
 	}
 	while(getline(file, line))
 	{
-		while ((pos = line.find(s1)) != std::string::npos)
+		i = 0;
+		while ((pos = line.find(s1, i)) != std::string::npos)
 		{
 			line.erase(pos, s1.length());
 			line.insert(pos, s2);
+			i = pos + s2.length();
 		}
 		outfile << line << std::endl;
 	}
