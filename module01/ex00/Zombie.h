@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Zombie.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 15:53:45 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/04 12:02:45 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/02/01 14:58:47 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/02/01 18:53:59 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#ifndef ZOMBIE_H
+#define ZOMBIE_H
 
-#include <iostream>
-#include <iomanip>
-#include <string>
+#include "Zombie.hpp"
 
-class Contact
-{
-	public:
-		Contact(void);
-		~Contact(void);
+Zombie*	newZombie( std::string _name);
+void	randomChump(std::string _name);
 
-		void	set_information();
-		void	get_information() const;
-		void	get_coordonate_of_one_contact() const;
-
-	private:
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nick_name;
-		std::string	_darkest_secret;
-		std::string	_phone;
-};
 
 #endif

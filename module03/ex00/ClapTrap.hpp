@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 15:53:45 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/04 12:02:45 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/02/09 17:38:50 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/02/09 18:23:56 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
 
 #include <iostream>
-#include <iomanip>
-#include <string>
+#include <string.h>
 
-class Contact
+class ClapTrap
 {
 	public:
-		Contact(void);
-		~Contact(void);
+	ClapTrap();
+	ClapTrap(std::string nom);
+	ClapTrap(ClapTrap const & other );
+	virtual ~ClapTrap();
 
-		void	set_information();
-		void	get_information() const;
-		void	get_coordonate_of_one_contact() const;
+	ClapTrap & operator=(ClapTrap const & other);
+
+	void	attack(const std::string & target);
+	void	takeDamage(unsigned int amount);
+	void	beRepaired(unsigned int amount);
 
 	private:
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nick_name;
-		std::string	_darkest_secret;
-		std::string	_phone;
+	std::string	_Name;
+	int			_Hp;
+	int			_Mana;
+	int			_Dmg;
 };
 
 #endif

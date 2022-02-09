@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 15:53:45 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/04 12:02:45 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/02/02 11:29:54 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/02/02 15:55:53 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#ifndef HUMAN_B_HPP
+#define HUMAN_B_HPP
 
 #include <iostream>
-#include <iomanip>
 #include <string>
+#include "Weapon.hpp"
 
-class Contact
+class HumanB
 {
 	public:
-		Contact(void);
-		~Contact(void);
 
-		void	set_information();
-		void	get_information() const;
-		void	get_coordonate_of_one_contact() const;
+	HumanB(std::string name);
+	~HumanB(void);
+
+	void	attack() const;
+	void	setWeapon(Weapon & weapon);
 
 	private:
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nick_name;
-		std::string	_darkest_secret;
-		std::string	_phone;
+	Weapon *_weapon;
+	std::string _name;
+
 };
 
 #endif

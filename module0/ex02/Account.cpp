@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:00:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/01 10:48:38 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:18:32 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 	int	Account::_totalAmount = 0;
 	int	Account::_totalNbDeposits = 0;
 	int	Account::_totalNbWithdrawals = 0;
+
 
 	Account::Account(int initial_deposit): _accountIndex(_nbAccounts), _amount(initial_deposit), _nbWithdrawals(0), _nbDeposits(0)
 	{

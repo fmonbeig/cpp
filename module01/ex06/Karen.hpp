@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Karen.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 15:53:45 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/04 12:02:45 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/02/03 12:07:34 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/02/03 15:17:21 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#ifndef KAREN_HPP
+#define KAREN_HPP
 
 #include <iostream>
-#include <iomanip>
 #include <string>
 
-class Contact
+class Karen
 {
 	public:
-		Contact(void);
-		~Contact(void);
+	Karen();
+	~Karen(void);
 
-		void	set_information();
-		void	get_information() const;
-		void	get_coordonate_of_one_contact() const;
+	void complain( std::string level );
 
 	private:
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nick_name;
-		std::string	_darkest_secret;
-		std::string	_phone;
+	void debug( void );
+	void info( void );
+	void warning( void );
+	void error( void );
+
 };
 
 #endif
+

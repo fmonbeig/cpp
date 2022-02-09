@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 15:53:45 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/04 12:02:45 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/02/01 15:55:07 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/02/01 18:11:45 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#include "Zombie.hpp"
 
-#include <iostream>
-#include <iomanip>
-#include <string>
-
-class Contact
+void randomChump( std::string name )
 {
-	public:
-		Contact(void);
-		~Contact(void);
+	Zombie zombie;
 
-		void	set_information();
-		void	get_information() const;
-		void	get_coordonate_of_one_contact() const;
+	zombie.set_name(name);
+	zombie.announce();
+}
 
-	private:
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nick_name;
-		std::string	_darkest_secret;
-		std::string	_phone;
-};
 
-#endif

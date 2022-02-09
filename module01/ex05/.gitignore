@@ -1,4 +1,4 @@
-renata glasc the chem# Object files
+# Object files
 *.o
 *.obj
 obj/
@@ -41,7 +41,7 @@ obj/
 # OS X
 .DS_Store
 
-Result
+karen
 valgrind-trace.txt
 valgrind-out.txt
 

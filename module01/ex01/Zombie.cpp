@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 15:53:45 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/04 12:02:45 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/02/01 15:02:35 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/02/01 18:14:22 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#include "Zombie.h"
 
-#include <iostream>
-#include <iomanip>
-#include <string>
-
-class Contact
+Zombie::Zombie(void)
 {
-	public:
-		Contact(void);
-		~Contact(void);
+	return ;
+}
 
-		void	set_information();
-		void	get_information() const;
-		void	get_coordonate_of_one_contact() const;
+Zombie::~Zombie(void)
+{
+	std::cout << this->_name << ": Take an headshot (Destruction)" << std::endl;
+	return ;
+}
 
-	private:
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nick_name;
-		std::string	_darkest_secret;
-		std::string	_phone;
-};
+void Zombie::set_name(std::string name)
+{
+	this->_name = name;
+}
 
-#endif
+void Zombie::announce( void )
+{
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..."<< std::endl;
+}
+
