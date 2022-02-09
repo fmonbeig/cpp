@@ -6,17 +6,43 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:27:32 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/08 15:56:09 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:42:32 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+// +------------------------------------------+ //
+//   CANONICAL FORM 					        //
+// +------------------------------------------+ //
 
 	Fixed::Fixed(void)
 	{
 		std::cout << "Default constructor called" << std::endl;
 		this->_value = 0;
 	}
+
+	Fixed::Fixed (const Fixed &other)
+	{
+		std::cout << "Copy constructor called" << std::endl;
+		this->_value = other._value;
+	}
+
+	Fixed::~Fixed(void)
+	{
+		std::cout << "Destructor called" << std::endl;
+	}
+
+	Fixed &Fixed::operator=(const Fixed & other)
+	{
+		std::cout << "Copy assignement operator called" << std::endl;
+		this->_value = other._value;
+		return *this;
+	}
+
+// +------------------------------------------+ //
+//   CONSTRUCTOR OVERLOAD 					    //
+// +------------------------------------------+ //
 
 	Fixed::Fixed(int value)
 	{
@@ -30,29 +56,19 @@
 		this->_value = roundf(value * (1 << Fixed::_bits));
 	}
 
-	Fixed::Fixed (const Fixed &other)
-	{
-		std::cout << "Copy constructor called" << std::endl;
-		_value = other._value;
-	}
-
-	Fixed::~Fixed(void)
-	{
-		std::cout << "Destructor called" << std::endl;
-	}
-
-	Fixed &Fixed::operator=(const Fixed & other)
-	{
-		std::cout << "Copy assignement operator called" << std::endl;
-		_value = other._value;
-		return *this;
-	}
+// +------------------------------------------+ //
+//   OPERATOR OVERLOAD 					        //
+// +------------------------------------------+ //
 
 	std::ostream &operator<<(std::ostream & out, Fixed const & rhs)
 	{
 		out << rhs.toFloat();
 		return out;
 	}
+
+// +------------------------------------------+ //
+//   MEMBER FUNCTION 					        //
+// +------------------------------------------+ //
 
 	int Fixed::getRawBits(void) const
 	{

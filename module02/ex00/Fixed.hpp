@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:24:02 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/07 17:13:04 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/09 11:38:22 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Fixed
 	public:
 	Fixed(void);
 	Fixed (const Fixed &other);
-	~Fixed(void);
+	virtual ~Fixed(void);
 	Fixed &operator=(const Fixed &other);
 
 	int getRawBits( void ) const;

@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:24:02 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/08 15:03:42 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/09 11:38:11 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Fixed
 	Fixed(int value);
 	Fixed(const float value);
 	Fixed (const Fixed &other);
-	~Fixed();
+	virtual ~Fixed();
 
 	Fixed &operator=(const Fixed &other);
 
