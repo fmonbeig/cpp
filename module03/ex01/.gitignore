@@ -41,7 +41,7 @@ obj/
 # OS X
 .DS_Store
 
-Claptrap
+Scavtrap
 valgrind-trace.txt
 valgrind-out.txt
 

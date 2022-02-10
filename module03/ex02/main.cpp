@@ -6,40 +6,36 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:37:42 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/10 14:44:04 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:50:29 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 
 int main()
 {
-	ClapTrap claptrap("Bob");
+	FragTrap bob("Bob");
+	ScavTrap robert("Robert");
+	ClapTrap gerard("Gérard");
 
-	claptrap.get_information();
-	claptrap.attack("Robert");
-	claptrap.takeDamage(5);
-	claptrap.get_information();
-	claptrap.beRepaired(1);
-	claptrap.beRepaired(1);
-	claptrap.beRepaired(1);
-	claptrap.beRepaired(1);
-	claptrap.beRepaired(1);
-	claptrap.get_information();
-	claptrap.takeDamage(5);
-	claptrap.attack("Robert");
-	claptrap.get_information();
-	claptrap.beRepaired(1);
-	claptrap.beRepaired(1);
-	claptrap.beRepaired(1);
-	claptrap.beRepaired(1);
-	claptrap.get_information();
-	claptrap.attack("Robert");
-	claptrap.takeDamage(25);
-	claptrap.takeDamage(3);
-	claptrap.beRepaired(1);
-	claptrap.attack("Robert");
-	claptrap.get_information();
+	bob.get_information();
+	robert.get_information();
+	gerard.get_information();
 
+	bob.attack("Robert");
+	robert.takeDamage(bob.get_dmg());
+	robert.beRepaired(7);
+	robert.get_information();
+
+	gerard.attack("Bob");
+	bob.takeDamage(gerard.get_dmg());
+	bob.get_information();
+
+	bob.attack("Gérard");
+	gerard.takeDamage(bob.get_dmg());
+
+	bob.highFivesGuys();
 }

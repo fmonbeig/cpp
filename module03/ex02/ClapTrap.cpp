@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:54:36 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/10 14:43:49 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:51:57 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	ClapTrap::ClapTrap() :
 	_Name(0), _Hp(0), _Ep(0), _Dmg(0)
 	{
-		std::cout << "Default constructor called" << std::endl;
+		std::cout << "\033[0;34mClapTrap\e[0m default constructor called" << std::endl;
 	}
 
 	ClapTrap::ClapTrap (const ClapTrap &other)
@@ -32,7 +32,7 @@
 
 	ClapTrap::~ClapTrap()
 	{
-		std::cout << "Destructor called" << std::endl;
+		std::cout << "\033[0;34mClapTrap\e[0m Destructor called" << std::endl;
 	}
 
 	ClapTrap &ClapTrap::operator=(const ClapTrap & other)
@@ -51,7 +51,7 @@
 	ClapTrap::ClapTrap(std::string name) :
 	_Name(name), _Hp(10), _Ep(10), _Dmg(0)
 	{
-		std::cout << "Name constructor called" << std::endl;
+		std::cout << "\033[0;34mClaptrap\e[0m name constructor called" << std::endl;
 	}
 
 // +------------------------------------------+ //
@@ -61,15 +61,15 @@
 	void	ClapTrap::attack(const std::string & target)
 	{
 		if (_Hp <= 0)
-			std::cout << "ClapTrap " << _Name << " is dead!" << std::endl;
+			std::cout << "\033[0;34mClapTrap\e[0m " << _Name << " is dead!" << std::endl;
 		else if (_Ep > 0)
 		{
-			std::cout << "ClapTrap " << _Name << " attacks " << target;
+			std::cout << "\033[0;34mClapTrap\e[0m " << _Name << " attacks " << target;
 			std::cout << " causing " << _Dmg << " points of damage!" << std::endl;
 			_Ep--;
 		}
 		else
-			std::cout << "ClapTrap " << _Name << " don't have enough energie to attack " << std::endl;
+			std::cout << "\033[0;34mClapTrap\e[0m " << _Name << " don't have enough energie to attack " << std::endl;
 	}
 
 	void	ClapTrap::takeDamage(unsigned int amount)
@@ -102,5 +102,11 @@
 
 	void	ClapTrap::get_information()
 	{
-		std::cout << "\n\033[0;34mHi ! I'm " << _Name << " I have : " << _Hp << " HP & " << _Ep << " Energy\e[0m" << std::endl;
+		std::cout << "\n\033[0;34m" << _Name <<" have :" << std::endl;
+		std::cout << _Hp << " HP\n" << _Ep << " Energy\n" << _Dmg << " Damage\e[0m"  << std::endl;
+	}
+
+	int		ClapTrap::get_dmg()
+	{
+		return (this->_Dmg);
 	}

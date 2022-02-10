@@ -6,7 +6,7 @@
 #    By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 14:48:02 by fmonbeig          #+#    #+#              #
-#    Updated: 2022/02/07 17:15:22 by fmonbeig         ###   ########.fr        #
+#    Updated: 2022/02/10 17:07:13 by fmonbeig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ green			= /bin/echo -e -n "\x1b[1m\x1b[32m$1\x1b[0m"
 filename		= /bin/echo -e -n "\x1b[30m\x1b[47m\x1b[1m$1\x1b[0m"
 
 NAME			= fixed
-CC				= clang++
+CC				= c++
 FLAGS			= -Wall -Werror -Wextra -std=c++98 -pedantic
 
 OBJ_DIR			= ./obj/

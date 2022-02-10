@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:54:36 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/10 14:43:49 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:04:30 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	ClapTrap::ClapTrap() :
 	_Name(0), _Hp(0), _Ep(0), _Dmg(0)
 	{
-		std::cout << "Default constructor called" << std::endl;
+		std::cout << "ClapTrap default constructor called" << std::endl;
 	}
 
 	ClapTrap::ClapTrap (const ClapTrap &other)
@@ -32,7 +32,7 @@
 
 	ClapTrap::~ClapTrap()
 	{
-		std::cout << "Destructor called" << std::endl;
+		std::cout << "ClapTrap Destructor called" << std::endl;
 	}
 
 	ClapTrap &ClapTrap::operator=(const ClapTrap & other)
@@ -51,7 +51,7 @@
 	ClapTrap::ClapTrap(std::string name) :
 	_Name(name), _Hp(10), _Ep(10), _Dmg(0)
 	{
-		std::cout << "Name constructor called" << std::endl;
+		std::cout << "Claptrap name constructor called" << std::endl;
 	}
 
 // +------------------------------------------+ //
@@ -102,5 +102,6 @@
 
 	void	ClapTrap::get_information()
 	{
-		std::cout << "\n\033[0;34mHi ! I'm " << _Name << " I have : " << _Hp << " HP & " << _Ep << " Energy\e[0m" << std::endl;
+		std::cout << "\n\033[0;34m" << _Name <<" have :" << std::endl;
+		std::cout << _Hp << " HP\n" << _Ep << " Energy\n" << _Dmg << " Damage\n\e[0m"  << std::endl;
 	}
