@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:42 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/14 13:37:10 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:00:34 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Dog : public Animal
 		virtual ~Dog();
 
 		Dog & operator=(Dog const & other);
+		void	makeSound() const;
 
 	protected:
 };

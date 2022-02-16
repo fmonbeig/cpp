@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:42 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/14 14:58:25 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:02:41 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class WrongCat : public WrongAnimal
 		virtual ~WrongCat();
 
 		WrongCat & operator=(WrongCat const & other);
+		void	makeSound() const;
+
 
 	protected:
 };

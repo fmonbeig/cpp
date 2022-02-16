@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/15 16:21:42 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:15:05 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
-class Character :public ICharacter
+class Character: public ICharacter
 {
 	protected:
 		std::string	_name;
@@ -34,6 +34,7 @@ class Character :public ICharacter
 		Character & operator=(Character const & other);
 
 		std::string const & getName() const;
+		AMateria	*getMateriaAdress(int idx) const;
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);

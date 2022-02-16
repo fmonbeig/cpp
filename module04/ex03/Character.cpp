@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/15 15:52:41 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:22:25 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 		for(i = 0; i < 4; i++)
 			_inventory[i] = NULL;
-		std::cout << "**A Character is created**" << std::endl;
+		std::cout << "**A \e[0;31mCharacter\e[0m is created**" << std::endl;
 	}
 
 // +------------------------------------------+ //
@@ -35,7 +35,7 @@
 
 		for(i = 0; i < 4; i++)
 			_inventory[i] = NULL;
-		std::cout << "**A Character is created**" << std::endl;
+		std::cout << "**A \e[0;31mCharacter\e[0m is created**" << std::endl;
 	}
 
 	Character::Character (const Character &other)
@@ -94,28 +94,40 @@
 	{
 		int	i;
 
-		for (i = 0; i < 4; i++)
+		for (i = 0; i < 4 && m != NULL; i++)
 		{
 			if (_inventory[i] == NULL)
+			{
 				_inventory[i] = m;
+				break ;
+			}
 		}
+		if (i >= 4 && m != NULL)
+			delete m;
 	}
 
 	void Character::unequip(int idx)
 	{
 		int i;
 
-		if (idx < 3)
-			_inventory[idx] == NULL;
+		if (idx >= 0 && idx <= 3)
+			_inventory[idx] = NULL;
 	}
 
 	void Character::use(int idx, ICharacter& target)
 	{
-		int i;
 
-		if (idx < 3)
+		if (idx >= 0 && idx <= 3 && _inventory[idx] != NULL)
 		{
-			if (_inventory[i] != NULL)
-				_inventory[i]->use(target);
+				_inventory[idx]->use(target);
 		}
+	}
+
+	AMateria*	Character::getMateriaAdress(int idx) const
+	{
+		int i;
+		
+		if (idx >= 0 && idx <= 3 && _inventory[idx] != NULL)
+			return (_inventory[idx]);
+		return (NULL);
 	}

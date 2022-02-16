@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:42 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/14 14:05:30 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:00:12 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Animal
 
 		Animal & operator=(Animal const & other);
 
-		void		makeSound() const;
+		virtual void	makeSound() const;
 		std::string	getType() const;
 
 	protected:

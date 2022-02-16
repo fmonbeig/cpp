@@ -39,3 +39,8 @@
 // +------------------------------------------+ //
 //   MEMBER FUNCTION					        //
 // +------------------------------------------+ //
+
+void	WrongCat::makeSound() const
+{
+		std::cout << "** MEOooooOOOUUUUUUUWWW **" << std::endl;
+}

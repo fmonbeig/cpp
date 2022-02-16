@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/15 15:58:16 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:54:30 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 	AMateria::AMateria(std::string const & type) : _type(type)
 	{
-		std::cout << "**A Materia is created**" << std::endl;
+		std::cout << "**A \e[1;33mMateria\e[0m is created**" << std::endl;
 	}
 
 // +------------------------------------------+ //
@@ -27,7 +27,7 @@
 
 	AMateria::AMateria(void) : _type("empty")
 	{
-		std::cout << "**A Materia is created**" << std::endl;
+		std::cout << "**A \e[1;33mMateria\e[0m is created**" << std::endl;
 	}
 
 	AMateria::AMateria (const AMateria &other)
@@ -37,7 +37,7 @@
 
 	AMateria::~AMateria(void)
 	{
-		std::cout << "**A Materia is destroyed**" << std::endl;
+		std::cout << "**A \e[1;33mMateria\e[0m is destroyed**" << std::endl;
 	}
 
 	AMateria &AMateria::operator=(const AMateria & other)
@@ -50,7 +50,10 @@
 //   MEMBER FUNCTION					        //
 // +------------------------------------------+ //
 
-		std::string const & AMateria::getType() const
-		{
-			return (this->_type);
-		}
+	std::string const & AMateria::getType() const
+	{
+		return (this->_type);
+	}
+
+	void AMateria::use(__attribute__ ((unused)) ICharacter& target)
+	{}

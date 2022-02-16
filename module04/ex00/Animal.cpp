@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/14 14:08:00 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:01:20 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,7 @@
 
 void	Animal::makeSound() const
 {
-	if (_type.compare("Dog") == 0)
-		std::cout << "🐶 Wouaf Wouaf 🐶" << std::endl;
-	else if (_type.compare("Cat") == 0)
-		std::cout << "🐱 Meoooooowww 🐱" << std::endl;
-	else
-		std::cout << "** Animal noise **" << std::endl;
+	std::cout << "** Animal noise **" << std::endl;
 }
 
 std::string	Animal::getType() const
