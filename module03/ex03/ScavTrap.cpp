@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/10 17:42:16 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/11 14:10:55 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,8 @@
 		std::cout << "\e[0;32mScavTrap\e[0m default constructor called" << std::endl;
 	}
 
-	ScavTrap::ScavTrap (const ScavTrap &other)
-	{
-		this->_Name = other._Name;
-		this->_Hp = other._Hp;
-		this->_Ep = other._Ep;
-		this->_Dmg= other._Dmg;
-	}
+	ScavTrap::ScavTrap (const ScavTrap &other) : ClapTrap(other)
+	{}
 
 	ScavTrap::~ScavTrap(void)
 	{
@@ -36,10 +31,7 @@
 
 	ScavTrap &ScavTrap::operator=(const ScavTrap & other)
 	{
-		this->_Name = other._Name;
-		this->_Hp = other._Hp;
-		this->_Ep = other._Ep;
-		this->_Dmg= other._Dmg;
+		ClapTrap::operator=(other);
 		return *this;
 	}
 
@@ -49,9 +41,10 @@
 
 	ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 	{
-		std::cout << "\e[0;32mScavTrap\e[0m default constructor called" << std::endl;
+		std::cout << "\e[0;32mScavTrap\e[0m name constructor called" << std::endl;
 		_Hp = 100;
 		_Ep = 50;
+		_EnergyBuffer = _Ep;
 		_Dmg = 20;
 	}
 

@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:37:42 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/10 18:39:48 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/15 11:03:53 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,53 @@
 #include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
-// FragTrap
-// 		_Hp = 100;
-// 		_Ep = 100;
-// 		_Dmg = 30;
-
-// ScavTrap
-// 		_Hp = 100;
-// 		_Ep = 50;
-// 		_Dmg = 20;
-
 int main()
 {
+	FragTrap	bob("Bob");
+	ScavTrap	robert("Robert");
+	ClapTrap	gerard("Gérard");
+	DiamondTrap	steph("Stéphanie");
 
-	DiamondTrap steph("Stéphanie");
-
+	bob.get_information();
+	robert.get_information();
+	gerard.get_information();
+	std::cout << std::endl;
+	steph.whoAmI();
 	steph.get_information();
-	// FragTrap bob("Bob");
-	// ScavTrap robert("Robert");
-	// ClapTrap gerard("Gérard");
+	std::cout << std::endl;
 
-	// bob.get_information();
-	// robert.get_information();
-	// gerard.get_information();
+	steph.guardGate();
+	steph.highFivesGuys();
+	steph.attack("Bob");
+	std::cout << std::endl;
 
-	// bob.attack("Robert");
-	// robert.takeDamage(bob.get_dmg());
-	// robert.beRepaired(7);
-	// robert.get_information();
+	bob.takeDamage(steph.get_dmg());
+	bob.beRepaired(12);
+	bob.beRepaired(12);
+	bob.get_information();
+	std::cout << std::endl;
 
-	// gerard.attack("Bob");
-	// bob.takeDamage(gerard.get_dmg());
-	// bob.get_information();
+	steph.attack("Robert");
+	robert.takeDamage(steph.get_dmg());
+	robert.guardGate();
+	steph.attack("Robert");
+	robert.takeDamage(0);
 
-	// bob.attack("Gérard");
-	// gerard.takeDamage(bob.get_dmg());
+	std::cout << std::endl;
+	steph.attack("Gérard");
+	gerard.takeDamage(steph.get_dmg());
 
-	// bob.highFivesGuys();
+	std::cout << std::endl;
+	bob.attack("Stéphanie");
+	steph.takeDamage(bob.get_dmg());
+	robert.attack("Stéphanie");
+	steph.takeDamage(robert.get_dmg());
+	bob.attack("Stéphanie");
+	steph.takeDamage(bob.get_dmg());
+
+	std::cout << std::endl;
+	bob.attack("Stéphanie");
+	steph.takeDamage(bob.get_dmg());
+	std::cout << std::endl;
+	bob.highFivesGuys();
 }

@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 14:48:02 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/10 18:23:55 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/11 13:50:27 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ class ScavTrap : virtual public ClapTrap
 
 	ScavTrap & operator=(ScavTrap const & other);
 
-	void	attack(const std::string & target);
+	virtual void	attack(const std::string & target);
 	void	guardGate();
 
 	void	get_information();
 
-	private:
-
+	protected:
+	int _EnergyBuffer;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:54:36 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/10 17:04:30 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/11 13:28:34 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 
 	ClapTrap &ClapTrap::operator=(const ClapTrap & other)
 	{
+		if (this == &other)
+			return (*this);
 		this->_Name = other._Name;
 		this->_Hp = other._Hp;
 		this->_Ep = other._Ep;

@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:10:02 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/10 18:23:46 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/11 13:36:38 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ class FragTrap : virtual public ClapTrap
 
 	FragTrap & operator=(FragTrap const & other);
 
-	void	attack(const std::string & target);
 	void	highFivesGuys(void);
 
 	void	get_information();
 
-	private:
+	protected:
+	int _HpBuffer;
+	int _DamageBuffer;
 
 };
 

@@ -41,7 +41,7 @@ obj/
 # OS X
 .DS_Store
 
-replace
+Bureaucrate
 valgrind-trace.txt
 valgrind-out.txt
 

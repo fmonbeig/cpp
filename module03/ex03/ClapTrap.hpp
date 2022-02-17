@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:38:50 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/10 17:46:01 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/11 13:55:43 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class ClapTrap
 	ClapTrap & operator=(ClapTrap const & other);
 
 	virtual void	attack(const std::string & target);
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
+	void			takeDamage(unsigned int amount);
+	void			beRepaired(unsigned int amount);
 
 	virtual void	get_information();
 	virtual int		get_dmg();

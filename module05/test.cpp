@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   test.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 11:29:54 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/02 15:31:35 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/02/17 12:25:42 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/02/17 12:34:01 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMAN_A_HPP
-#define HUMAN_A_HPP
+#include <iostream>       // std::cerr
+#include <typeinfo>       // operator typeid
+#include <exception>      // std::exception
 
-#include <iostream>
-#include <string>
-#include "Weapon.hpp"
+class Polymorphic {virtual void member(){}};
 
-class HumanA
-{
-	public:
+int main () {
+  try
+  {
+    Polymorphic * pb = 0;
+    typeid(*pb);  // throws a bad_typeid exception
+  }
+  catch (std::exception& e)
+  {
+    std::cerr << "exception caught: " << e.what() << '\n';
+  }
+  return 0;
+}
 
-	HumanA(std::string name, Weapon& weapon);
-	~HumanA(void);
 
-	void	attack() const;
-
-	private:
-	Weapon&	_weapon;
-	std::string _name;
-};
-
-#endif

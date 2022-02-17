@@ -41,7 +41,7 @@ obj/
 # OS X
 .DS_Store
 
-zombie
+Rank
 valgrind-trace.txt
 valgrind-out.txt
 

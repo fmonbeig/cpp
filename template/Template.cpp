@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   template.cpp                                       :+:      :+:    :+:   */
+/*   Template.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/09 17:57:26 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:13:26 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 //   CANONICAL FORM 					        //
 // +------------------------------------------+ //
 
-	Class::Class(void)
+	Class::Class(void) _var(0)
 	{
-		this->_var = 0;
+		std::cout << "**Class is created**" << std::endl;
 	}
 
 	Class::Class (const Class &other)
@@ -28,13 +28,16 @@
 
 	Class::~Class(void)
 	{
-		return ;
+		std::cout << "**Class is destroyed**" << std::endl;
 	}
 
-	Class &Class::operator=(const Class & other)
+	Class &Class::operator=(const Class & rhs)
 	{
-		this->_var = other._var;
-		return *this;
+		if (this != &rhs)
+		{
+			this->_var = rhs._var;
+			return *this;
+		}
 	}
 
 // +------------------------------------------+ //

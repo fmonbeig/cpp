@@ -6,7 +6,7 @@
 #    By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 14:48:02 by fmonbeig          #+#    #+#              #
-#    Updated: 2022/02/01 18:50:07 by fmonbeig         ###   ########.fr        #
+#    Updated: 2022/02/17 15:44:45 by fmonbeig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,15 @@ blue			= /bin/echo -e -n "\x1b[1m\x1b[34m$1\x1b[0m"
 green			= /bin/echo -e -n "\x1b[1m\x1b[32m$1\x1b[0m"
 filename		= /bin/echo -e -n "\x1b[30m\x1b[47m\x1b[1m$1\x1b[0m"
 
-NAME			= zombie_horde
-CC				= clang++
-FLAGS			= -Wall -Werror -Wextra -std=c++98 -pedantic
+NAME			= Rank
+CC				= c++
+FLAGS			= -Wall -Werror -Wextra -g -std=c++98 -pedantic
 
 OBJ_DIR			= ./obj/
 
-SRC_LIST		= main.cpp\
-					ZombieHorde.cpp \
-					Zombie.cpp \
+SRC_LIST		= 	main.cpp\
+					Bureaucrate.cpp\
+					Form.cpp\
 
 SRC				= $(SRC_LIST)
 
