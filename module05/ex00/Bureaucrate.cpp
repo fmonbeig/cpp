@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/17 15:42:09 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:30:19 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@
 
 const char* Bureaucrate::GradeTooHighException::what() const throw()
 {
-	return ("\e[0;31mError : Grade is too high\e[0m");
+	return ("\e[0;31mGrade is too high\e[0m");
 }
 
 const char* Bureaucrate::GradeTooLowException::what() const throw()
 {
-	return ("\e[0;31mError : Grade is too low\e[0m");
+	return ("\e[0;31mGrade is too low\e[0m");
 }
 

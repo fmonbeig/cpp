@@ -6,72 +6,61 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:30:05 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/17 15:37:42 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:34:09 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrate.hpp"
+#include "Form.hpp"
 
 int	 main()
 {
 	try
 	{
-		Bureaucrate bob("Bob", 150);
-		std::cout << bob << std::endl;
-		bob.demotion();
+		Form		B12("B12", 500, 30);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	try
 	{
-		Bureaucrate Franck("Franck", 149);
-		std::cout << Franck << std::endl;
-		Franck.demotion();
-		Franck.demotion();
-		Franck.demotion();
-		std::cout << Franck << std::endl;
-		Franck.demotion();
-		Franck.demotion();
-		Franck.demotion();
+		Form		B12("B12", 50, -89);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	try
 	{
-		Bureaucrate Flo("Flo", 2);
-		std::cout << Flo << std::endl;
-		Flo.promotion();
-		Flo.promotion();
-		Flo.promotion();
+		Bureaucrate	bob("Bob", 90);
+		Form		B12("B12", 50, 30);
+
+		bob.signForm(&B12);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	try
 	{
-		Bureaucrate Flo("Flo", 151);
-		std::cout << Flo << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+		Bureaucrate	bob("Big Chief Bob", 1);
+		Form		B12("B12", 50, 30);
 
-	try
-	{
-		Bureaucrate Flo("Flo", 0);
-		std::cout << Flo << std::endl;
+		std::cout << B12 << std::endl;
+		bob.signForm(&B12);
+		std::cout << B12 << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
+
 }

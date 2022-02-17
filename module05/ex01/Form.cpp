@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/17 15:47:38 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:30:05 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 //   CONSTRUCTOR OVERLOAD 					    //
 // +------------------------------------------+ //
 
-	Form::Form(std::string name, int grade): _name(name), _grade(grade)
+	Form::Form(std::string name, const int sign, const int execute):
+		_name(name), _sign(sign), _execute(execute), _isSigned(0)
 	{
-		if (_grade <= 0)
+		if (_sign <= 0 || _execute <= 0)
 				throw GradeTooHighException();
-		if (_grade > 150)
+		if (_sign > 150 || _execute > 150)
 				throw GradeTooLowException();
 		std::cout << "**Form is created**" << std::endl;
 	}
@@ -29,15 +30,16 @@
 //   CANONICAL FORM 					        //
 // +------------------------------------------+ //
 
-	Form::Form(void): _name("unknow"), _grade(150)
+	Form::Form(void):
+	_name("unknown"), _sign(150), _execute(150), _isSigned(0)
 	{
 		std::cout << "**Default Form is created**" << std::endl;
 	}
 
-	Form::Form (const Form &other)
+	Form::Form (const Form &other): _sign(other._sign), _execute(other._execute) //FIXME si un int est const, on ne pourra pas faire changer ca valeur
 	{
 		this->_name = other._name;
-		this->_grade = other._grade;
+		this->_isSigned = other._isSigned;
 	}
 
 	Form::~Form(void)
@@ -50,7 +52,7 @@
 		if (this != &rhs)
 		{
 			this->_name = rhs._name;
-			this->_grade = rhs._grade;
+			this->_isSigned = rhs._isSigned;
 		}
 		return *this;
 	}
@@ -61,7 +63,12 @@
 
 	std::ostream &operator<<(std::ostream & out, Form const & rhs)
 	{
-		out <<"\e[1;37m" << rhs.getName() << ", bureaucrat " << rhs.getGrade() << ".\e[0m" ;
+		out <<"\e[1;37mForm : "  << rhs.getName() << "\nGrade required for signed : " << rhs.getGradeSign();
+		out << "\nGrade required for execute : " << rhs.getGradeExecute() << "\nForm is \e[0m";
+		if (rhs.getIsSigned())
+			out << "\e[0;32msigned\e[0m" << std::endl;
+		else
+			out << "\e[0;31mnot signed\e[0m" << std::endl;
 		return out;
 	}
 
@@ -72,21 +79,21 @@
 		std::string	Form::getName() const
 		{	return (this->_name); }
 
-		int	Form::getGrade() const
-		{	return (this->_grade); }
+		int	Form::getGradeSign() const
+		{	return (this->_sign); }
 
-		void	Form::promotion()
-		{
-			--this->_grade;
-			if (_grade <= 0)
-				throw GradeTooHighException();
-		}
+		int	Form::getGradeExecute() const
+		{	return (this->_execute); }
 
-		void	Form::demotion()
+		int	Form::getIsSigned() const
+		{	return (this->_isSigned); }
+
+		void	Form::BeSigned(Bureaucrate & b)
 		{
-			++this->_grade;
-			if (_grade > 150)
+			if (b.getGrade() > this->_sign)
 				throw GradeTooLowException();
+			if (this->_isSigned == 0)
+				this->_isSigned = 1;
 		}
 
 // +------------------------------------------+ //
@@ -95,11 +102,11 @@
 
 const char* Form::GradeTooHighException::what() const throw()
 {
-	return ("\e[0;31mError : Grade is too high\e[0m");
+	return ("\e[0;31mGrade is too high\e[0m");
 }
 
 const char* Form::GradeTooLowException::what() const throw()
 {
-	return ("\e[0;31mError : Grade is too low\e[0m");
+	return ("\e[0;31mGrade is too low\e[0m");
 }
 

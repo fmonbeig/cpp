@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/17 15:42:09 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:28:59 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,20 @@
 			++this->_grade;
 			if (_grade > 150)
 				throw GradeTooLowException();
+		}
+
+		void	Bureaucrate::signForm(Form *form)
+		{
+			try
+			{
+				form->BeSigned(*this);
+				std::cout << this->getName() << " signed " << form->getName() << std::endl;
+			}
+			catch(const std::exception& e)
+			{
+				std::cout << this->getName() << " couldn't sign " << form->getName();
+				std::cout << " because " << e.what() << std::endl;
+			}
 		}
 
 // +------------------------------------------+ //

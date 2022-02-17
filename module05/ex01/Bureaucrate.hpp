@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/17 15:22:30 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:26:05 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <iostream>
 #include <string.h>
 #include <stdexcept>
+#include "Form.hpp"
+
+class Form; //TODO : comprendre pourquoi il faut absolument faire ca
 
 class Bureaucrate
 {
@@ -40,6 +43,7 @@ class Bureaucrate
 		//other function
 		void	promotion();
 		void	demotion();
+		void	signForm(Form *form);
 
 		// Except Class
 		class GradeTooHighException : public std::exception{
