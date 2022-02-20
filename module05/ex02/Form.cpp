@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/20 21:56:47 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:30:05 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 		std::cout << "**Default Form is created**" << std::endl;
 	}
 
-	Form::Form (const Form &other): _sign(other._sign), _execute(other._execute) //FIXME A tester si ca passe avec cette declaration (const)
+	Form::Form (const Form &other): _sign(other._sign), _execute(other._execute) //FIXME si un int est const, on ne pourra pas faire changer ca valeur
 	{
 		this->_name = other._name;
 		this->_isSigned = other._isSigned;
