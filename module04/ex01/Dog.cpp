@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/14 17:50:27 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:56:27 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,41 +22,35 @@
 
 	Dog::Dog(void): Animal("Dog")
 	{
-		this->new_brain();
+		_brain = new Brain();
 		std::cout << "\e[0;32m*A Dog is coming*\e[0m" << std::endl;
 	}
 
 	Dog::Dog (const Dog &other) :
 		Animal(other)
 	{
-		delete _brain;
-		_brain = new Brain;
-		*_brain = *other._brain;
+		_brain = new Brain(*other._brain);
 	}
 
 	Dog::~Dog(void)
 	{
-		delete _brain;
+		if (_brain != NULL)
+			delete _brain;
 		std::cout << "*A \e[0;32mDog\e[0m is leaving*" << std::endl;
 	}
 
 	Dog &Dog::operator=(const Dog & other)
 	{
 		Animal::operator=(other);
-		delete _brain;
-		_brain = new Brain;
-		*_brain = *other._brain;
+		if (_brain != NULL)
+			delete _brain;
+		_brain = new Brain(*other._brain);
 		return *this;
 	}
 
 // +------------------------------------------+ //
 //   MEMBER FUNCTION					        //
 // +------------------------------------------+ //
-
-void	Dog::new_brain()
-{
-	this->_brain = new Brain;
-}
 
 void	Dog::train()
 {

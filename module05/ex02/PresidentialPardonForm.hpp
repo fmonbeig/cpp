@@ -1,44 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/21 18:17:13 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 13:56:59 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHARACTER_HPP
-#define CHARACTER_HPP
+
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
 #include <string.h>
-#include "ICharacter.hpp"
-#include "AMateria.hpp"
-#include "Ice.hpp"
-#include "Cure.hpp"
+#include <stdexcept>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-class Character: public ICharacter
+class PresidentialPardonForm : public Form
 {
-	protected:
-		std::string	_name;
-		AMateria *_inventory[4];
-		Character();
-		
-	public:
-		Character(std::string const & name);
-		Character(Character const & other);
-		virtual ~Character();
-		Character & operator=(Character const & other);
+	private:
+			PresidentialPardonForm();
+			std::string	_target;
 
-		std::string const & getName() const;
-		AMateria	*getMateriaAdress(int idx) const;
-		void equip(AMateria* m);
-		void unequip(int idx);
-		void use(int idx, ICharacter& target);
+	public:
+		//canonical fom
+		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm(PresidentialPardonForm const & other );
+		virtual ~PresidentialPardonForm();
+
+		//overload operator
+		PresidentialPardonForm & operator=(PresidentialPardonForm const & rhs);
+
+		//other function
+		virtual void execute(Bureaucrat const & executor) const;
+
 
 };
 
 #endif
+

@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 14:30:05 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/21 15:11:03 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/02/21 16:34:53 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#ifndef INTERN_HPP
+#define INTERN_HPP
+
+#include <iostream>
+#include <string.h>
 #include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-int	 main()
+class Intern
 {
-	try
-	{
-		Bureaucrat				bob("Bob", 1);
-		ShrubberyCreationForm	form("garden");
-		std::cout << form;
-		std::cout << std::endl;
-		bob.signForm(&form);
-		std::cout << std::endl;
-		bob.executeForm(form);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	std::cout << std::endl;
+	private :
+		Form	*Robotomy(std::string targetForm);
+		Form	*Presidential(std::string targetForm);
+		Form	*Shrubberry(std::string targetForm);
 
-}
+	public:
+		//canonical fom
+		Intern();
+		Intern(Intern const & other );
+		virtual ~Intern();
+
+		//Overload operator
+		Intern & operator=(Intern const & other);
+
+		//other function
+		Form	*makeForm(std::string nameForm, std::string targetForm);
+};
+
+#endif

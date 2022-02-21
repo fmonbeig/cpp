@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/17 18:22:16 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 11:34:47 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include <iostream>
 #include <string.h>
 #include <stdexcept>
-#include "Bureaucrate.hpp"
+#include "Bureaucrat.hpp"
 
-class Bureaucrate;
+class Bureaucrat;
 
 class Form
 {
@@ -47,7 +47,7 @@ class Form
 
 		//other function
 
-		void		BeSigned(Bureaucrate & b);
+		void		BeSigned(Bureaucrat & b);
 
 		// Except Class
 		class GradeTooHighException : public std::exception{

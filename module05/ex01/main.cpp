@@ -6,11 +6,11 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:30:05 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/17 18:34:09 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 11:34:47 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrate.hpp"
+#include "Bureaucrat.hpp"
 #include "Form.hpp"
 
 int	 main()
@@ -37,7 +37,7 @@ int	 main()
 
 	try
 	{
-		Bureaucrate	bob("Bob", 90);
+		Bureaucrat	bob("Bob", 90);
 		Form		B12("B12", 50, 30);
 
 		bob.signForm(&B12);
@@ -50,7 +50,7 @@ int	 main()
 
 	try
 	{
-		Bureaucrate	bob("Big Chief Bob", 1);
+		Bureaucrat	bob("Big Chief Bob", 1);
 		Form		B12("B12", 50, 30);
 
 		std::cout << B12 << std::endl;

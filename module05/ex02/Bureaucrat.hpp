@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrate.hpp                                    :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/17 15:22:30 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:17:02 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRATE_HPP
-#define BUREAUCRATE_HPP
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
 #include <iostream>
 #include <string.h>
 #include <stdexcept>
+#include "Form.hpp"
 
-class Bureaucrate
+class Form;
+
+class Bureaucrat
 {
 	protected:
-		Bureaucrate();
+		Bureaucrat();
 		std::string	_name;
 		int			_grade;
 
 	public:
 		//canonical fom
-		Bureaucrate(std::string name, int grade);
-		Bureaucrate(Bureaucrate const & other );
-		virtual ~Bureaucrate();
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(Bureaucrat const & other );
+		virtual ~Bureaucrat();
 
 		//overload operator
-		Bureaucrate & operator=(Bureaucrate const & rhs);
+		Bureaucrat & operator=(Bureaucrat const & rhs);
 
 		//get function
 		std::string	getName() const;
@@ -40,6 +43,8 @@ class Bureaucrate
 		//other function
 		void	promotion();
 		void	demotion();
+		void	signForm(Form *form);
+		void	executeForm(Form const & form);
 
 		// Except Class
 		class GradeTooHighException : public std::exception{
@@ -52,7 +57,7 @@ class Bureaucrate
 
 };
 
-std::ostream &operator<<(std::ostream & out, Bureaucrate const & rhs);
+std::ostream &operator<<(std::ostream & out, Bureaucrat const & rhs);
 
 #endif
 

@@ -1,44 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/21 18:17:13 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 14:17:50 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHARACTER_HPP
-#define CHARACTER_HPP
+
+#ifndef SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
 
 #include <iostream>
 #include <string.h>
-#include "ICharacter.hpp"
-#include "AMateria.hpp"
-#include "Ice.hpp"
-#include "Cure.hpp"
+#include <fstream>
+#include <stdexcept>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-class Character: public ICharacter
+class ShrubberyCreationForm : public Form
 {
-	protected:
-		std::string	_name;
-		AMateria *_inventory[4];
-		Character();
-		
-	public:
-		Character(std::string const & name);
-		Character(Character const & other);
-		virtual ~Character();
-		Character & operator=(Character const & other);
+	private:
+			ShrubberyCreationForm();
+			std::string	_target;
 
-		std::string const & getName() const;
-		AMateria	*getMateriaAdress(int idx) const;
-		void equip(AMateria* m);
-		void unequip(int idx);
-		void use(int idx, ICharacter& target);
+	public:
+		//canonical fom
+		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(ShrubberyCreationForm const & other );
+		virtual ~ShrubberyCreationForm();
+
+		//overload operator
+		ShrubberyCreationForm & operator=(ShrubberyCreationForm const & rhs);
+
+		//other function
+		virtual void execute(Bureaucrat const & executor) const;
+
 
 };
 
 #endif
+

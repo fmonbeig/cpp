@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:42 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/14 18:05:17 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 18:07:19 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ class Dog : public A_Animal
 
 	protected:
 				Brain	*_brain;
-				void	new_brain();
-
 
 };
 

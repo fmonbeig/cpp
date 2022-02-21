@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:42 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/14 17:50:59 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:51:43 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ class Cat: public Animal
 
 	private:
 		Brain	*_brain;
-		void	new_brain();
 };
 
 #endif

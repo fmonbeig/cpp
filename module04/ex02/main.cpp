@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:25 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/14 18:08:12 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 18:08:37 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int main()
 {
-	A_Animal	animal;
+	//A_Animal	animal;
 
 
 	std::cout << "=============OTHER TEST============" <<std::endl;

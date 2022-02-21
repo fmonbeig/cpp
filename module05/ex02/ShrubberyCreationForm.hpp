@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/20 22:16:39 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:17:24 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 
 #include <iostream>
 #include <string.h>
+#include <fstream>
 #include <stdexcept>
-#include "Bureaucrate.hpp"
+#include "Bureaucrat.hpp"
 #include "Form.hpp"
-
-class Bureaucrate; //FIXME pourquoi est on obligê de faire ca ??
 
 class ShrubberyCreationForm : public Form
 {
 	private:
 			ShrubberyCreationForm();
+			std::string	_target;
 
 	public:
 		//canonical fom
-		ShrubberyCreationForm(std::string name);
+		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(ShrubberyCreationForm const & other );
 		virtual ~ShrubberyCreationForm();
 
@@ -37,9 +37,7 @@ class ShrubberyCreationForm : public Form
 		ShrubberyCreationForm & operator=(ShrubberyCreationForm const & rhs);
 
 		//other function
-		virtual void execute(Bureaucrate const & executor) const;
-
-
+		virtual void execute(Bureaucrat const & executor) const;
 };
 
 #endif

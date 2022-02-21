@@ -6,46 +6,46 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/17 18:30:19 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 11:34:47 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrate.hpp"
+#include "Bureaucrat.hpp"
 
 // +------------------------------------------+ //
 //   CONSTRUCTOR OVERLOAD 					    //
 // +------------------------------------------+ //
 
-	Bureaucrate::Bureaucrate(std::string name, int grade): _name(name), _grade(grade)
+	Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 	{
 		if (_grade <= 0)
 				throw GradeTooHighException();
 		if (_grade > 150)
 				throw GradeTooLowException();
-		std::cout << "**Bureaucrate is created**" << std::endl;
+		std::cout << "**Bureaucrat is created**" << std::endl;
 	}
 
 // +------------------------------------------+ //
 //   CANONICAL FORM 					        //
 // +------------------------------------------+ //
 
-	Bureaucrate::Bureaucrate(void): _name("unknow"), _grade(150)
+	Bureaucrat::Bureaucrat(void): _name("unknow"), _grade(150)
 	{
-		std::cout << "**Default Bureaucrate is created**" << std::endl;
+		std::cout << "**Default Bureaucrat is created**" << std::endl;
 	}
 
-	Bureaucrate::Bureaucrate (const Bureaucrate &other)
+	Bureaucrat::Bureaucrat (const Bureaucrat &other)
 	{
 		this->_name = other._name;
 		this->_grade = other._grade;
 	}
 
-	Bureaucrate::~Bureaucrate(void)
+	Bureaucrat::~Bureaucrat(void)
 	{
-		std::cout << "**Bureaucrate is destroyed**" << std::endl;
+		std::cout << "**Bureaucrat is destroyed**" << std::endl;
 	}
 
-	Bureaucrate &Bureaucrate::operator=(const Bureaucrate & rhs)
+	Bureaucrat &Bureaucrat::operator=(const Bureaucrat & rhs)
 	{
 		if (this != &rhs)
 		{
@@ -59,7 +59,7 @@
 //   OPERATOR OVERLOAD					        //
 // +------------------------------------------+ //
 
-	std::ostream &operator<<(std::ostream & out, Bureaucrate const & rhs)
+	std::ostream &operator<<(std::ostream & out, Bureaucrat const & rhs)
 	{
 		out <<"\e[1;37m" << rhs.getName() << ", bureaucrat " << rhs.getGrade() << ".\e[0m" ;
 		return out;
@@ -69,37 +69,51 @@
 //   MEMBER FUNCTION					        //
 // +------------------------------------------+ //
 
-		std::string	Bureaucrate::getName() const
+		std::string	Bureaucrat::getName() const
 		{	return (this->_name); }
 
-		int	Bureaucrate::getGrade() const
+		int	Bureaucrat::getGrade() const
 		{	return (this->_grade); }
 
-		void	Bureaucrate::promotion()
+		void	Bureaucrat::promotion()
 		{
 			--this->_grade;
 			if (_grade <= 0)
 				throw GradeTooHighException();
 		}
 
-		void	Bureaucrate::demotion()
+		void	Bureaucrat::demotion()
 		{
 			++this->_grade;
 			if (_grade > 150)
 				throw GradeTooLowException();
 		}
 
+		void	Bureaucrat::signForm(Form *form)
+		{
+			try
+			{
+				form->BeSigned(*this);
+				std::cout << this->getName() << " signed " << form->getName() << std::endl;
+			}
+			catch(const std::exception& e)
+			{
+				std::cout << this->getName() << " couldn't sign " << form->getName();
+				std::cout << " because " << e.what() << std::endl;
+			}
+		}
+
 // +------------------------------------------+ //
 //   EXCEPTION CLASS FUNCTION			        //
 // +------------------------------------------+ //
 
-const char* Bureaucrate::GradeTooHighException::what() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("\e[0;31mGrade is too high\e[0m");
+	return ("\e[0;31mError : Grade is too high\e[0m");
 }
 
-const char* Bureaucrate::GradeTooLowException::what() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("\e[0;31mGrade is too low\e[0m");
+	return ("\e[0;31mError : Grade is too low\e[0m");
 }
 

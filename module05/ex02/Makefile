@@ -6,7 +6,7 @@
 #    By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 14:48:02 by fmonbeig          #+#    #+#              #
-#    Updated: 2022/02/20 22:00:31 by fmonbeig         ###   ########.fr        #
+#    Updated: 2022/02/21 14:39:55 by fmonbeig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,11 @@ FLAGS			= -Wall -Werror -Wextra -g -std=c++98 -pedantic
 OBJ_DIR			= ./obj/
 
 SRC_LIST		= 	main.cpp\
-					Bureaucrate.cpp\
+					Bureaucrat.cpp\
 					Form.cpp\
 					ShrubberyCreationForm.cpp\
+					PresidentialPardonForm.cpp\
+					RobotomyRequestForm.cpp\
 
 SRC				= $(SRC_LIST)
 

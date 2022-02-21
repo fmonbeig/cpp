@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/21 17:17:09 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:53:53 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 		std::cout << "**Default Form is created**" << std::endl;
 	}
 
-	Form::Form (const Form &other): _sign(other._sign), _execute(other._execute)
+	Form::Form (const Form &other): _sign(other._sign), _execute(other._execute) //FIXME si un int est const, on ne pourra pas faire changer ca valeur
 	{
 		this->_name = other._name;
 		this->_isSigned = other._isSigned;
@@ -66,7 +66,7 @@
 		out <<"\e[1;37mForm : "  << rhs.getName() << "\nGrade required for signed : " << rhs.getGradeSign();
 		out << "\nGrade required for execute : " << rhs.getGradeExecute() << "\nForm is \e[0m";
 		if (rhs.getIsSigned())
-			out << "\e[0;32msigned\e[0m" << std::endl;
+				out << "\e[0;32msigned\e[0m" << std::endl;
 		else
 			out << "\e[0;31mnot signed\e[0m" << std::endl;
 		return out;

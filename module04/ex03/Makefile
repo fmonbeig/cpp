@@ -6,7 +6,7 @@
 #    By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 14:48:02 by fmonbeig          #+#    #+#              #
-#    Updated: 2022/02/16 17:59:38 by fmonbeig         ###   ########.fr        #
+#    Updated: 2022/02/21 18:10:03 by fmonbeig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC_LIST		= main.cpp\
 					Character.cpp\
 					Cure.cpp\
 					Ice.cpp\
-					MateriaSource.cpp\\e[0m
+					MateriaSource.cpp\
 
 
 SRC				= $(SRC_LIST)

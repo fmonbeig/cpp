@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/16 17:22:25 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/21 18:18:42 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,14 +119,14 @@
 
 		if (idx >= 0 && idx <= 3 && _inventory[idx] != NULL)
 		{
-				_inventory[idx]->use(target);
+			_inventory[idx]->use(target);
 		}
 	}
 
 	AMateria*	Character::getMateriaAdress(int idx) const
 	{
 		int i;
-		
+
 		if (idx >= 0 && idx <= 3 && _inventory[idx] != NULL)
 			return (_inventory[idx]);
 		return (NULL);

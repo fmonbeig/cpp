@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   Bureaucrate.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,49 +10,47 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 // +------------------------------------------+ //
 //   CONSTRUCTOR OVERLOAD 					    //
 // +------------------------------------------+ //
 
-	Form::Form(std::string name, const int sign, const int execute):
-		_name(name), _sign(sign), _execute(execute), _isSigned(0)
+	Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 	{
-		if (_sign <= 0 || _execute <= 0)
+		if (_grade <= 0)
 				throw GradeTooHighException();
-		if (_sign > 150 || _execute > 150)
+		if (_grade > 150)
 				throw GradeTooLowException();
-		std::cout << "**Form is created**" << std::endl;
+		std::cout << "**Bureaucrat is created**" << std::endl;
 	}
 
 // +------------------------------------------+ //
 //   CANONICAL FORM 					        //
 // +------------------------------------------+ //
 
-	Form::Form(void):
-	_name("unknown"), _sign(150), _execute(150), _isSigned(0)
+	Bureaucrat::Bureaucrat(void): _name("unknow"), _grade(150)
 	{
-		std::cout << "**Default Form is created**" << std::endl;
+		std::cout << "**Default Bureaucrat is created**" << std::endl;
 	}
 
-	Form::Form (const Form &other): _sign(other._sign), _execute(other._execute) //FIXME A tester si ca passe avec cette declaration (const)
+	Bureaucrat::Bureaucrat (const Bureaucrat &other)
 	{
 		this->_name = other._name;
-		this->_isSigned = other._isSigned;
+		this->_grade = other._grade;
 	}
 
-	Form::~Form(void)
+	Bureaucrat::~Bureaucrat(void)
 	{
-		std::cout << "**Form is destroyed**" << std::endl;
+		std::cout << "**Bureaucrat is destroyed**" << std::endl;
 	}
 
-	Form &Form::operator=(const Form & rhs)
+	Bureaucrat &Bureaucrat::operator=(const Bureaucrat & rhs)
 	{
 		if (this != &rhs)
 		{
 			this->_name = rhs._name;
-			this->_isSigned = rhs._isSigned;
+			this->_grade = rhs._grade;
 		}
 		return *this;
 	}
@@ -61,14 +59,9 @@
 //   OPERATOR OVERLOAD					        //
 // +------------------------------------------+ //
 
-	std::ostream &operator<<(std::ostream & out, Form const & rhs)
+	std::ostream &operator<<(std::ostream & out, Bureaucrat const & rhs)
 	{
-		out <<"\e[1;37mForm : "  << rhs.getName() << "\nGrade required for signed : " << rhs.getGradeSign();
-		out << "\nGrade required for execute : " << rhs.getGradeExecute() << "\nForm is \e[0m";
-		if (rhs.getIsSigned())
-			out << "\e[0;32msigned\e[0m" << std::endl;
-		else
-			out << "\e[0;31mnot signed\e[0m" << std::endl;
+		out <<"\e[1;37m" << rhs.getName() << ", bureaucrat " << rhs.getGrade() << ".\e[0m" ;
 		return out;
 	}
 
@@ -76,36 +69,36 @@
 //   MEMBER FUNCTION					        //
 // +------------------------------------------+ //
 
-		std::string	Form::getName() const
+		std::string	Bureaucrat::getName() const
 		{	return (this->_name); }
 
-		int	Form::getGradeSign() const
-		{	return (this->_sign); }
+		int	Bureaucrat::getGrade() const
+		{	return (this->_grade); }
 
-		int	Form::getGradeExecute() const
-		{	return (this->_execute); }
-
-		int	Form::getIsSigned() const
-		{	return (this->_isSigned); }
-
-		void	Form::BeSigned(Bureaucrat & b)
+		void	Bureaucrat::promotion()
 		{
-			if (b.getGrade() > this->_sign)
+			--this->_grade;
+			if (_grade <= 0)
+				throw GradeTooHighException();
+		}
+
+		void	Bureaucrat::demotion()
+		{
+			++this->_grade;
+			if (_grade > 150)
 				throw GradeTooLowException();
-			if (this->_isSigned == 0)
-				this->_isSigned = 1;
 		}
 
 // +------------------------------------------+ //
 //   EXCEPTION CLASS FUNCTION			        //
 // +------------------------------------------+ //
 
-const char* Form::GradeTooHighException::what() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("\e[0;31mGrade is too high\e[0m");
 }
 
-const char* Form::GradeTooLowException::what() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("\e[0;31mGrade is too low\e[0m");
 }
