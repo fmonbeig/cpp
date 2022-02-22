@@ -1,0 +1,71 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh25460\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 DAY06 PISCINE CPP, les casts\
+\
+1 - le cast en C\
+\
+TYPE CONVERSION\
+Cast implicite : le compilateur cast pour nous un type qui peut rentrer dans un plus grand type.\
+Quand on cast un type avec un autre type de m\'eame valeur mais cod\'e9 diff\'e9remment on appelle \'e7a une conversion.\
+Cast explicite : (type) pr\'e9ciser le type dans lequel on veut convertir\
+Conversion : m\'eame valeur mais codage en bits different.\
+Quand on fait une conversion a perte, pr\'e9ciser le type (cast) afin de signaler au compilateur que c\'92est volontaire.\
+\
+TYPE REINTERPRETATION\
+lorsqu\'92il y a une conversion et que la valeur de base garde les meme bits dans le m\'eame ordre, on appelle cette conversion identitaire une reinterpretation.\
+Le type void * est interessant car il permet de contenir une adresse sur n\'92importe quel type. Il est plus g\'e9n\'e9ral que n\'92importe quel type (hi\'e9rarchie sup\'e9rieure).\
+Promotion implicite > monter a un type + g\'e9n\'e9ral (par ex int * to void *)\
+Demotion explicite > descendre a un type - g\'e9n\'e9ral (par ex void * to int *) - implicite = hasardeux.\
+\
+TYPE QUALIFIER REINTERPRETATION / ! \\\
+Les types qualifier sont les cast avec les mots clefs de type const ou volatile.\
+L\'92addresse d\'92un entier constant est plus g\'e9n\'e9ral, haute que celle d\'92un entier.\
+Que se passe-t-il si on souhaite passer d\'92un entier constant a un entier? Le compilateur va refuser de compiler si on fait une demotion implicite. Obligation de faire une demotion explicite. Tr\'e8s d\'e9conseill\'e9 et synonyme de probl\'e8me de conception de programme.\
+- refaire le design\
+- code qui ne nous appartient pas (par ex fonction d\'92une librairie)\
+\
+2 - le cast en CPP\
+\
+UPCAST AND DOWNCAST\
+Nouvelle hi\'e9rarchie de type entre classes et les interactions qui existent entre elles.\
+Par la notion d\'92h\'e9ritage une hi\'e9rarchie s\'92instaure naturellement.\
+pas de possibilit\'e9 de faire un downcast de mani\'e8re implicite (le compilateur ne veut pas).\
+Dans ce cas la utiliser un cast explicite. Attention a ne pas se tromper de type (classe soeur)\
+Cpp va proposer une nouvelle syntaxe de cast qui permet de choisir un cast sp\'e9cifique a chaque situation.\
+\
+LES OPERATEURS DE CAST EN CPP\
+\
+STATIC CAST\
+cast qui nous permet de faire des conversions simples et de naviguer dans l\'92arbre d\'92heritage.\
+double b = 42, int D = static_cast<int>(b) > je souhaite faire un static cast de l\'92expression b vers le type int.\
+Dans le cas d\'92un downcast explicite de classe > Child d = static_cast<child>(b) > pas bon si b = child2, bon si b = parent. Pas bon si les addresses n\'92appartiennent pas au m\'eame arbre d\'92heritage.\
+Le static cast s\'92assure que les addresses sont compatibles sur un m\'eame arbre d\'92h\'e9ritage.\
+\
+DYNAMIC CAST\
+Ce cast a la particularit\'e9 d\'92avoir lieu a l\'92ex\'e9cution. Tous les autres cast sont fait a la compilation.\
+Il va falloir mettre en forme dans le code une architecture pouvant prendre en compte la possibilit\'e9 que le dynamic cast \'e9choue. Le dynamic cast ne va fonctionner que dans le cas d\'92une instance polymorphisme. Une des fonctions membres devra \'eatre virtuelle.\
+Le dynamic cast verified si un downcast est possible ou non. Il fonctionne sur des cast de pointeur ou de r\'e9f\'e9rence.\
+Child * c = dynamic_cast<child *>(b) > checker if NULL\
+Child &d = dynamic_cast<child &>(*b) > pas possible de renvoyer nulle, donc utiliser une exception stp::bad_cast\
+\
+REINTERPRET CAST\
+Permet de r\'e9aliser des reinterpretations, des downcasts et upcasts. Cast le plus permissif du cpp.\
+Pas de v\'e9rification semantique. Utiliser ce cast pour les retypages. \
+\
+CONST CAST / ! \\\
+Aucun des casts pr\'e9c\'e9dents n\'92est capables de faire une conversion des qualifieurs de type.\
+Permet de changer le qualifier d\'92un type int const b; int * d = const_cast<int *>(b);\
+Toujours autant mauvais signe en en C (voir plus haut)\
+\
+TYPE CAST OPERATEURS DE CPP\
+Nouvelle syntaxe qui va permettre de d\'e9finir au sein des classes des op\'e9rateurs sp\'e9cifiques qui permettrons de faire des conversions implicite de notre classe vers un type qui nous int\'e9resse.\
+Par ex : operator float() \{ return this->x; \} oubien operator int() \{ return static_const<int>( this->x); \}\
+\
+EXPLICIT KEYWORD\
+On peut faire le parall\'e8le entre la syntaxe des cast et la syntaxe des constructeurs. nominstance(param\'e8tresaenvoyer), les constructeurs peuvent se rapprocher conceptuellement des casts,\
+Le mot clef explicit interdit la construction implicite d\'92une instance.}
