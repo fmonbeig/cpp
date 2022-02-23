@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Data.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 13:27:09 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/23 17:42:02 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/02/23 17:46:16 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/02/23 18:01:00 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Conversion.hpp"
+#include "Data.hpp"
 
-int	main(int argc, char **argv)
+uintptr_t serialize(Data* ptr)
 {
-	if (argc == 2)
-	{
-		Conversion	convert(argv[1]);
-		convert.printValues();
-	}
-	else
-		std::cout << "Error: Only one argument is needed" << std::endl;
+	uintptr_t point;
+
+	point = reinterpret_cast<uintptr_t>(ptr);
+	return (point);
+}
+
+Data* deserialize(uintptr_t raw)
+{
+	Data *ptr;
+
+	ptr = reinterpret_cast<Data*>(raw);
+	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/22 18:45:51 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/02/23 17:40:40 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,13 @@
 // +------------------------------------------+ //
 
 Conversion::Conversion(char *str):
-	_char(0), _int(0), _float(0), _double(0), _flagChar(0),
+	_char(0), _int(0), _float(0), _double(0), _flagChar(0), _precision(1),
 	flagCharImpossible(FALSE), flagIntImpossible(FALSE),
 	flagFloatImpossible(FALSE), flagDoubleImpossible(FALSE),
-	flagNan(FALSE)
+	flagIsInt(FALSE), flagInfinity(FALSE)
 {
 	checkType(str);
-	convertToChar(str);
-	// this->_int = ;
-	// this->_float = ;
-	// this->_double = ;
+	checkLimit(str);
 	std::cout << "**Conversion is created**" << std::endl;
 }
 
@@ -35,26 +32,27 @@ Conversion::Conversion(char *str):
 // +------------------------------------------+ //
 
 Conversion::Conversion(void):
-	_char(0), _int(0), _float(0), _double(0), _flagChar(0),
+	_char(0), _int(0), _float(0), _double(0), _flagChar(0), _precision(1),
 	flagCharImpossible(FALSE), flagIntImpossible(FALSE),
 	flagFloatImpossible(FALSE), flagDoubleImpossible(FALSE),
-	flagNan(FALSE)
-{
-	std::cout << "**Default Conversion is created**" << std::endl;
-}
+	flagIsInt(FALSE), flagInfinity(FALSE)
+{}
 
-Conversion::Conversion (const Conversion &other) //FIXME rajouter les flags
+Conversion::Conversion (const Conversion &other)
 {
 	this->_char = other._char;
 	this->_int = other._int;
 	this->_float = other._float;
 	this->_double = other._double;
+	flagCharImpossible = other.flagCharImpossible;
+	flagIntImpossible = other.flagIntImpossible;
+	flagFloatImpossible = other.flagFloatImpossible;
+	flagDoubleImpossible = other.flagDoubleImpossible;
+	flagIsInt = other.flagIsInt;
 }
 
 Conversion::~Conversion(void)
-{
-	std::cout << "**Conversion is destroyed**" << std::endl;
-}
+{}
 
 Conversion &Conversion::operator=(const Conversion & rhs)
 {
@@ -64,15 +62,31 @@ Conversion &Conversion::operator=(const Conversion & rhs)
 		this->_int = rhs._int;
 		this->_float = rhs._float;
 		this->_double = rhs._double;
+		flagCharImpossible = rhs.flagCharImpossible;
+		flagIntImpossible = rhs.flagIntImpossible;
+		flagFloatImpossible = rhs.flagFloatImpossible;
+		flagDoubleImpossible = rhs.flagDoubleImpossible;
+		flagIsInt = rhs.flagIsInt;
 	}
 		return *this;
+}
+
+// +------------------------------------------+ //
+//   OTHER FUNCTION					        //
+// +------------------------------------------+ //
+
+static int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
 // +------------------------------------------+ //
 //   MEMBER FUNCTION					        //
 // +------------------------------------------+ //
 
-void	Conversion::convertToChar(char *str) // FIXME rajouter la notion de non displayable
+bool	Conversion::isChar(char *str)
 {
 	int	i;
 
@@ -83,47 +97,256 @@ void	Conversion::convertToChar(char *str) // FIXME rajouter la notion de non dis
 	if (i == 3)
 	{
 		if (str[0] == '\'' && str[2] == '\'')
+		{
 			this->_char = str[1];
+			return (TRUE);
+		}
 	}
+	return (FALSE);
+}
+
+bool	Conversion::isInt(char *str)
+{
+	int	i;
+
+	i = -1;
+	if (str[0] == '.')
+		return (FALSE);
+	if (str[0] == '-')
+		i++;
+	while (str[++i])
+	{
+		_precision++;
+		if (ft_isdigit(str[i]))
+			continue ;
+		else if (str[i] == '.')
+		{
+			i++;
+			break;
+		}
+		else
+			return (FALSE);
+	}
+	i--;
+	while (str[++i])
+	{
+		_precision++;
+		if (str[i] == '0')
+			continue ;
+		else
+			return (FALSE);
+	}
+	return (TRUE);
+}
+
+bool	Conversion::isFloat(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	if (str[i - 1] != 'f')
+		return (FALSE);
+	i = -1;
+	if (str[0] == '.' || str[0] == '-')
+		i++;
+	while (str[++i])
+	{
+		if (ft_isdigit(str[i]))
+			continue ;
+		else if (str[i] == '.')
+		{
+			i++;
+			break;
+		}
+		else
+			return (FALSE);
+	}
+	i--;
+	while (str[++i])
+	{
+		_precision++;
+		if (ft_isdigit(str[i]))
+			continue ;
+		else if (str[i] == 'f')
+			break;
+		else
+			return (FALSE);
+	}
+	return (TRUE);
+}
+
+bool	Conversion::isDouble(char *str)
+{
+	int	i;
+
+	i = -1;
+	if (str[0] == '.' || str[0] == '-')
+		i++;
+	while (str[++i])
+	{
+		if (ft_isdigit(str[i]))
+			continue ;
+		else if (str[i] == '.')
+		{
+			i++;
+			break;
+		}
+		else
+			return (FALSE);
+	}
+	i--;
+	while (str[++i])
+	{
+		_precision++;
+		if (ft_isdigit(str[i]))
+			continue ;
+		else
+			return (FALSE);
+	}
+	return (TRUE);
 }
 
 void	Conversion::checkType(char *str)
 {
-
 	std::string temp = std::string(str);
-	if (temp == "nan" || temp == "nanf") // FIXME rajouter les inf
+
+	if (temp == "inff" || temp == "-inff"
+		|| temp == "+inff" || temp == "nanf")
 	{
-		flagNan = TRUE;
 		flagCharImpossible = TRUE;
 		flagIntImpossible = TRUE;
+		flagInfinity = TRUE;
+		_float = static_cast<float>(std::strtod(str, NULL));
+		_double = static_cast<double>(_float);
+		return ;
 	}
+
+	if ( temp == "inf" || temp == "-inf"
+		|| temp == "+inf" || temp == "nan")
+	{
+		flagCharImpossible = TRUE;
+		flagIntImpossible = TRUE;
+		flagInfinity = TRUE;
+		_double = static_cast<double>(std::strtod(str, NULL));
+		_float = static_cast<float>(_double);
+		return ;
+	}
+
+	if (isChar(str))
+	{
+		std::cout << "\e[1;37mIT'S A : \e[1;31mCHAR\e[0m" << std::endl;
+		_int = static_cast<int>(_char);
+		_float = static_cast<float>(_char);
+		_double = static_cast<double>(_char);
+		return ;
+	}
+
+	if (isInt(str))
+	{
+		std::cout << "\e[1;37mIT'S AN : \e[1;31mINT\e[0m" << std::endl;
+		_int = static_cast<int>(std::strtod(str, NULL));
+		if (_int >= 0 && _int <= 127)
+			_char = static_cast<char>(_int);
+		else
+			flagCharImpossible = TRUE;
+		_float = static_cast<float>(std::strtod(str, NULL));
+		_double = static_cast<double>(std::strtod(str, NULL));
+		flagIsInt = TRUE;
+		return ;
+	}
+
+	if (isFloat(str))
+	{
+		std::cout << "\e[1;37mIT'S A : \e[1;31mFLOAT\e[0m" << std::endl;
+		flagCharImpossible = TRUE;
+		_float = static_cast<float>(std::strtod(str, NULL));
+		_int = static_cast<int>(_float);
+		_double = static_cast<double>(_float );
+		return ;
+	}
+
+	if (isDouble(str))
+	{
+		std::cout << "\e[1;37mIT'S A : \e[1;31mDOUBLE\e[0m" << std::endl;
+		flagCharImpossible = TRUE;
+		_double = static_cast<double>(std::strtod(str, NULL));
+		_int = static_cast<int>(_double);
+		_float = static_cast<float>(_double);
+		return ;
+	}
+
+	flagCharImpossible = TRUE;
+	flagIntImpossible = TRUE;
+	flagFloatImpossible = TRUE;
+	flagDoubleImpossible = TRUE;
 }
 
+void	Conversion::checkLimit(char *str)
+{
+	double value = std::strtod(str, NULL);
 
+	if (flagInfinity == FALSE)
+	{
+		if (value < -std::numeric_limits<char>::min() ||
+			value > std::numeric_limits<char>::max())
+			{
+				std::cout <<  std::numeric_limits<char>::max();
+				flagCharImpossible = TRUE;
+			}
+		if (value < std::numeric_limits<int>::min() ||
+			value > std::numeric_limits<int>::max())
+				flagIntImpossible = TRUE;
+		if (value < -std::numeric_limits<float>::max() ||
+			value > std::numeric_limits<float>::max())
+				flagFloatImpossible = TRUE;
+	}
+
+}
 
 void	Conversion::printValues()
 {
+	std::cout << "\e[0;33m=========================\e[0m" << std::endl;
 	if (flagCharImpossible == TRUE)
-		std::cout << "Char: impossible" << std::endl;
+		std::cout << "Char  : impossible" << std::endl;
 	else
-		std::cout << "Char: " << _char << std::endl;
+	{
+		if (_char >= 32 && _char <= 126)
+			std::cout << "Char  : '" << _char << "'" << std::endl;
+		else
+			std::cout << "Char  : " << "Non displayable" << std::endl;
+	}
 
 	if (flagIntImpossible == TRUE)
-		std::cout << "Int: impossible" << std::endl;
+		std::cout << "Int   : impossible" << std::endl;
 	else
-		std::cout << "Int: " << _int << std::endl;
+		std::cout << "Int   : " << _int << std::endl;
 
 	if (flagFloatImpossible == TRUE)
-		std::cout << "Float: impossible" << std::endl;
-	else if (flagNan == TRUE)
-		std::cout << "Float: nanf" << std::endl;
+		std::cout << "Float : impossible" << std::endl;
 	else
-		std::cout << "Float: " << _float << std::endl;
+	{
+		std::cout << "Float : " << std::setprecision(_precision) << _float;
+		if (flagIsInt == TRUE)
+			std::cout << ".0";
+		std::cout << "f" << std::endl;
+	}
 
 	if (flagDoubleImpossible == TRUE)
 		std::cout << "Double: impossible" << std::endl;
-	else if (flagNan == TRUE)
-		std::cout << "Double: nan" << std::endl;
 	else
-		std::cout << "Double: " << _double << std::endl;
+	{
+		std::cout << "Double: " << std::setprecision(_precision) << _double;
+		if (flagIsInt == TRUE)
+			std::cout << ".0";
+		std::cout << std::endl;
+
+	}
+
+	std::cout << "\e[0;33m=========================\e[0m" << std::endl;
 }
+
+
+
+
