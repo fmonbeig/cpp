@@ -5,36 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 10:53:34 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/01 16:00:49 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/03/01 16:10:07 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/03/01 17:21:58 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
-#include <vector>
-#include <list>
+#include "Span.cpp"
 
-int	main()
+int main()
 {
 	try
 	{
-		std::vector<int> v = {7, 5, 0, 9, 18};
-		int j = easyfind(v, 4849898);
-		std::cout << j << std::endl;
+		Span span(3);
+
+		span.addNumber(5);
+		span.addNumber(9);
+		span.addNumber(1);
+		span.addNumber(898);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 
-	try
+
+		try
 	{
-		std::list<int> v = {7, 5, 0, 9, 18};
-		int j = easyfind(v, 7);
-		std::cout << j << std::endl;
+		Span span(5);
+
+		span.addNumber(-95);
+		span.addNumber(500);
+		span.addNumber(1);
+		span.addNumber(898);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
+
 }
+
+
