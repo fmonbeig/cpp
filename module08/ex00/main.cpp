@@ -5,37 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 15:31:33 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/28 16:45:01 by fmonbeig         ###   ########.fr       */
+/*   Created: 2022/03/01 10:53:34 by fmonbeig          #+#    #+#             */
+/*   Updated: 2022/03/01 13:10:19 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#include "easyfind.hpp"
+#include <vector>
+#include <list>
 
-#include <iostream>
-#include <string.h>
-
-int main( void )
+int	main()
 {
-	Array<double> test(4);
-
-	test[0] = 7;
-	test[1] = 99;
-	test[2] = 288;
-	test[3] = -74;
+	try
+	{
+		std::vector<int> v = {7, 5, 0, 9, 18};
+		int j = easyfind(v, 4849898);
+		std::cout << j << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
 	try
 	{
-		// std::cout << "valeur de array[-1] = " << test[-1] << std::endl;
-		// std::cout << "valeur de array[59] = " << test[59] << std::endl;
-		std::cout << "valeur de array[0] = " << test[0] << std::endl;
-		std::cout << "valeur de array[3] = " << test[3] << std::endl;
-		// std::cout << "valeur de array[4] = " << test[4] << std::endl;
-
-		Array<double>  copy = test;
-
-		std::cout << "valeur de copy[0] = " << copy[0] << std::endl;
-		std::cout << "valeur de copy[3] = " << copy[3] << std::endl;
+		std::list<int> v = {7, 5, 0, 9, 18};
+		int j = easyfind(v, 7);
+		std::cout << j << std::endl;
 	}
 	catch(const std::exception& e)
 	{
