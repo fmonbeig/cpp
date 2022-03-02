@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:30:05 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/21 11:34:47 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/02 17:50:22 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ int	 main()
 		Franck.demotion();
 		Franck.demotion();
 		std::cout << Franck << std::endl;
-		Franck.demotion();
-		Franck.demotion();
-		Franck.demotion();
 	}
 	catch(const std::exception& e)
 	{

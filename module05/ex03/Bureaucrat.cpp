@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/21 17:14:30 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/02 17:47:07 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //   CONSTRUCTOR OVERLOAD 					    //
 // +------------------------------------------+ //
 
-	Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
+	Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(grade)
 	{
 		if (_grade <= 0)
 				throw GradeTooHighException();
@@ -34,11 +34,8 @@
 		std::cout << "**Default Bureaucrat is created**" << std::endl;
 	}
 
-	Bureaucrat::Bureaucrat (const Bureaucrat &other)
-	{
-		this->_name = other._name;
-		this->_grade = other._grade;
-	}
+	Bureaucrat::Bureaucrat (const Bureaucrat &other): _name(other._name), _grade(other._grade)
+	{}
 
 	Bureaucrat::~Bureaucrat(void)
 	{
@@ -49,7 +46,6 @@
 	{
 		if (this != &rhs)
 		{
-			this->_name = rhs._name;
 			this->_grade = rhs._grade;
 		}
 		return *this;

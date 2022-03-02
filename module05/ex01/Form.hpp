@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/21 11:34:47 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/02 18:02:09 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ class Bureaucrat;
 
 class Form
 {
-		private:
-			Form();
-			std::string	_name;
-			const int	_sign;
-			const int	_execute;
-			bool		_isSigned;
+	private:
+		Form();
+		const		std::string	_name;
+		const int	_sign;
+		const int	_execute;
+		bool		_isSigned;
 
 	public:
 		//canonical fom
-		Form(std::string name, const int sign, const int execute);
+		Form(const std::string name, const int sign, const int execute);
 		Form(Form const & other );
 		virtual ~Form();
 

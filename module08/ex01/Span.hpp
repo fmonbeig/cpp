@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/01 17:26:05 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/02 12:18:16 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <vector>
 #include <iterator>
+
 
 class Span
 {
@@ -34,9 +35,10 @@ class Span
 
 		Span & operator=(Span const & other);
 
-		void			addNumber(unsigned int i);
-		unsigned int	shortestpan();
-		unsigned int	longestpan();
+		void	addNumber(int i);
+		void	addRangeIt(std::vector<int> v);
+		int		shortestpan();
+		int		longestpan();
 
 		class TooMuchElement: public std::exception{
 			public:

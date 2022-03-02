@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/01 17:26:51 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:00:11 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@
 		std::cout << "**Default Span is created**" << std::endl;
 	}
 
-	Span::Span(const Span &other) //FIXME Mieux gérer les copies
+	Span::Span(const Span &other)
 	{
 		this->_N = other._N;
+		for (int i=0; i < other._span.size(); i++)
+			_span.push_back(other._span[i]);
 	}
 
 	Span::~Span(void)
@@ -44,6 +46,8 @@
 		if (this != &rhs)
 		{
 			this->_N = rhs._N;
+			for (int i=0; i < rhs._span.size(); i++)
+				_span.push_back(rhs._span[i]);
 		}
 			return *this;
 	}
@@ -62,7 +66,7 @@ const char* Span::NotEnoughElement::what() const throw()
 	return ("\e[0;31mERROR: Not enough element\e[0m");
 }
 
-void	Span::addNumber(unsigned int i)
+void	Span::addNumber(int i)
 {
 	if (_span.size() < _N)
 		_span.push_back(i);
@@ -70,23 +74,43 @@ void	Span::addNumber(unsigned int i)
 		throw TooMuchElement();
 }
 
-unsigned int	Span::shortestpan()
+int	Span::longestpan()
 {
-	if (_span.size() <= 1)
-		throw NotEnoughElement();
-	else
-	{
+	std::vector<int> temp = _span;
 
+	if (_span.size() > 1)
+	{
+		std::sort(temp.begin(), temp.end());
+		return (temp.back() - temp.front());
 	}
+	throw NotEnoughElement();
 }
 
-unsigned int	Span::longestpan()
+int	Span::shortestpan()
 {
-	if (_span.size() <= 1)
-		throw NotEnoughElement();
-	else
-	{
-		
-	}
+	std::vector<int> temp = _span;
+	int	x;
+	int	ret;
 
+	if (_span.size() > 1)
+	{
+		std::sort(temp.begin(), temp.end());
+		ret = temp[1] - temp[0];
+		for (int i = 0; i < temp.size() - 1; i++)
+		{
+			x = temp[i + 1] - temp[i];
+			if (x < ret)
+				ret = x;
+		}
+		return (ret);
+	}
+	throw NotEnoughElement();
+}
+
+void	Span::addRangeIt(std::vector<int> v)
+{
+	if (_span.size() + v.size() < _N)
+		_span.insert(_span.end(), v.begin(), v.end());
+	else
+		throw TooMuchElement();
 }

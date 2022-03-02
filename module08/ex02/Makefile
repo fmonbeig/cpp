@@ -6,7 +6,7 @@
 #    By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 14:48:02 by fmonbeig          #+#    #+#              #
-#    Updated: 2022/03/02 11:36:20 by fmonbeig         ###   ########.fr        #
+#    Updated: 2022/03/02 14:08:13 by fmonbeig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,13 @@ blue			= /bin/echo -e -n "\x1b[1m\x1b[34m$1\x1b[0m"
 green			= /bin/echo -e -n "\x1b[1m\x1b[32m$1\x1b[0m"
 filename		= /bin/echo -e -n "\x1b[30m\x1b[47m\x1b[1m$1\x1b[0m"
 
-NAME			= Span
+NAME			= Abomination
 CC				= c++
 FLAGS			= -Wall -Werror -Wextra -g -std=c++98 -pedantic
 
 OBJ_DIR			= ./obj/
 
 SRC_LIST		= 	main.cpp\
-					Span.cpp\
 
 
 SRC				= $(SRC_LIST)

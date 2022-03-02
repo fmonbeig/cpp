@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/21 11:34:47 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/02 18:00:13 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //   CONSTRUCTOR OVERLOAD 					    //
 // +------------------------------------------+ //
 
-	Form::Form(std::string name, const int sign, const int execute):
+	Form::Form(const std::string name, const int sign, const int execute):
 		_name(name), _sign(sign), _execute(execute), _isSigned(0)
 	{
 		if (_sign <= 0 || _execute <= 0)
@@ -36,11 +36,10 @@
 		std::cout << "**Default Form is created**" << std::endl;
 	}
 
-	Form::Form (const Form &other): _sign(other._sign), _execute(other._execute) //FIXME A tester si ca passe avec cette declaration (const)
-	{
-		this->_name = other._name;
-		this->_isSigned = other._isSigned;
-	}
+	Form::Form (const Form &other):
+	_sign(other._sign), _execute(other._execute),
+	_name(other._name), _isSigned(other._isSigned)
+	{}
 
 	Form::~Form(void)
 	{
@@ -51,7 +50,6 @@
 	{
 		if (this != &rhs)
 		{
-			this->_name = rhs._name;
 			this->_isSigned = rhs._isSigned;
 		}
 		return *this;
