@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/02 17:09:11 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/03 17:49:03 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,22 @@ class MutantStack : public std::stack<T>
 	public:
 		MutantStack(): std::stack<T> {}
 		MutantStack(const std::stack<T> other): std::stack<T>(other) {}
-
 		virtual ~MutantStack(){}
-
-		MutantStack&	operator=(const std::stack<T> &rhs)
+		MutantStack&	operator=(const std::stack<T> &rhs) // ici c est le nom du container de la stack (voir attribut membre dans la doc)
 		{
 			std::stack<T>::c.operator=(rhs);
 			return *this;
 		}
-
+		// Comme on herite de stack on peut utiliser son container, pour connaitre son iterateur il faut utiliser les alias.
 		// //Iterator
 		auto begin()
-		{ return (_stack.begin());}
+		{ return (c.begin());}
 
 		auto end()
-		{ return (_stack.end());}
+		{ return (c.end());}
+
+		// les typedef permettent de creer des alias a l interieur des classes
+		// avec :: on peut faire appel au type de value / container etc... voir member type lors dans la doc
 
 		// typedef typename std::stack<T>::container_type::iterator iterator;
         // typedef typename std::stack<T>::container_type::const_iterator const_iterator;

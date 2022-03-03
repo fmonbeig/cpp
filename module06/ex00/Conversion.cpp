@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/23 17:40:40 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/03 12:45:58 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,9 @@ bool	Conversion::isInt(char *str)
 bool	Conversion::isFloat(char *str)
 {
 	int	i;
+	int	flag_zero;
 
+	flag_zero = 1;
 	i = 0;
 	while (str[i])
 		i++;
@@ -167,13 +169,23 @@ bool	Conversion::isFloat(char *str)
 	while (str[++i])
 	{
 		_precision++;
-		if (ft_isdigit(str[i]))
+		if (str[i] == 0)
+		{
+			flag_zero = 0;
 			continue ;
+		}
+		else if (ft_isdigit(str[i]))
+		{
+			flag_zero = 1;
+			continue ;
+		}
 		else if (str[i] == 'f')
 			break;
 		else
 			return (FALSE);
 	}
+	if (flag_zero)
+		flagIsInt = TRUE;
 	return (TRUE);
 }
 
@@ -260,8 +272,11 @@ void	Conversion::checkType(char *str)
 	if (isFloat(str))
 	{
 		std::cout << "\e[1;37mIT'S A : \e[1;31mFLOAT\e[0m" << std::endl;
-		flagCharImpossible = TRUE;
 		_float = static_cast<float>(std::strtod(str, NULL));
+		if (_float >= 0 && _float <= 127)
+			_char = static_cast<char>(_float);
+		else
+			flagCharImpossible = TRUE;
 		_int = static_cast<int>(_float);
 		_double = static_cast<double>(_float );
 		return ;
@@ -270,8 +285,11 @@ void	Conversion::checkType(char *str)
 	if (isDouble(str))
 	{
 		std::cout << "\e[1;37mIT'S A : \e[1;31mDOUBLE\e[0m" << std::endl;
-		flagCharImpossible = TRUE;
 		_double = static_cast<double>(std::strtod(str, NULL));
+		if (_double >= 0 && _double <= 127)
+			_char = static_cast<char>(_double);
+		else
+			flagCharImpossible = TRUE;
 		_int = static_cast<int>(_double);
 		_float = static_cast<float>(_double);
 		return ;
@@ -289,12 +307,8 @@ void	Conversion::checkLimit(char *str)
 
 	if (flagInfinity == FALSE)
 	{
-		if (value < -std::numeric_limits<char>::min() ||
-			value > std::numeric_limits<char>::max())
-			{
-				std::cout <<  std::numeric_limits<char>::max();
+		if (value < 0 || value > 127)
 				flagCharImpossible = TRUE;
-			}
 		if (value < std::numeric_limits<int>::min() ||
 			value > std::numeric_limits<int>::max())
 				flagIntImpossible = TRUE;

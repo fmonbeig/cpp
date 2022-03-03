@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/24 12:03:13 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/03 14:28:30 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ Base *generate(void)
 
 	srand (time(NULL));
 	i = rand() % 3 + 1;
-
 	switch(i)
 	{
 		case 1: std::cout << "\e[1;37mClass A\e[0m have been created\n" ; return new A; break;

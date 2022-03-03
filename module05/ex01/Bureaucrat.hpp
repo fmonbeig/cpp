@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/02 17:45:16 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/03 14:50:43 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdexcept>
 #include "Form.hpp"
 
-class Form; //TODO : comprendre pourquoi il faut absolument faire ca
+class Form;
 
 class Bureaucrat
 {
