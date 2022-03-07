@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:32:18 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/02/28 16:47:03 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:32:08 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ class Array
 		Array<T>(Array const & other )
 		{
 			this->_size = other._size;
-			this->array = new T[size()];
-			for (unsigned int i = 0; i < this->size(); i++)
+			this->array = new T[_size];
+			for (unsigned int i = 0; i < _size; i++)
 				this->array[i] = other.array[i];
 		}
 
@@ -55,7 +55,8 @@ class Array
 			this->_size = other._size;
 			if (this->array)
 				delete [] this->array;
-			for (unsigned int i = 0; i < this->size(); i++)
+			this->array = new T[_size];
+			for (unsigned int i = 0; i < _size; i++)
 				this->array[i] = other.array[i];
 			return *this;
 		}

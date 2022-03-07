@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:49:47 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/02 12:18:16 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:25:40 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ class Span
 
 		void	addNumber(int i);
 		void	addRangeIt(std::vector<int> v);
-		int		shortestpan();
-		int		longestpan();
+		int		shortestSpan();
+		int		longestSpan();
 
 		class TooMuchElement: public std::exception{
 			public:

@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/03 12:45:58 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:42:07 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ bool	Conversion::isFloat(char *str)
 	int	i;
 	int	flag_zero;
 
-	flag_zero = 1;
+	flag_zero = 0;
 	i = 0;
 	while (str[i])
 		i++;
@@ -170,10 +170,7 @@ bool	Conversion::isFloat(char *str)
 	{
 		_precision++;
 		if (str[i] == 0)
-		{
-			flag_zero = 0;
 			continue ;
-		}
 		else if (ft_isdigit(str[i]))
 		{
 			flag_zero = 1;
@@ -184,7 +181,7 @@ bool	Conversion::isFloat(char *str)
 		else
 			return (FALSE);
 	}
-	if (flag_zero)
+	if (!flag_zero)
 		flagIsInt = TRUE;
 	return (TRUE);
 }

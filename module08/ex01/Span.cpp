@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:57:17 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/02 14:00:11 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:25:51 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	Span::addNumber(int i)
 		throw TooMuchElement();
 }
 
-int	Span::longestpan()
+int	Span::longestSpan()
 {
 	std::vector<int> temp = _span;
 
@@ -86,7 +86,7 @@ int	Span::longestpan()
 	throw NotEnoughElement();
 }
 
-int	Span::shortestpan()
+int	Span::shortestSpan()
 {
 	std::vector<int> temp = _span;
 	int	x;
