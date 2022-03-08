@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:32:18 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/07 11:32:08 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:12:13 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ class Array
 
 	public :
 
-		Array<T>(): array(NULL), _size(0) {}
+		Array<T>():_size(0) { this->array = new T[0]; }
 
 		Array<T>(unsigned int n): _size(n)
 		{
 			if (n != 0)
 				this->array = new T[n];
 			else
-				array = NULL;
+				this->array = new T[0];
 		}
 
 		Array<T>(Array const & other )

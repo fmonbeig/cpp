@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:32:18 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/03 14:46:12 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:44:21 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ T min ( T const & x, T const & y )
 { return ((x < y) ? x : y);}
 
 template< typename T >
-void swap (T x, T y)
+void swap (T & x, T & y)
 {
 	T temp = x;
 	x = y;
-	y = x;
+	y = temp;
 }
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:31:33 by fmonbeig          #+#    #+#             */
-/*   Updated: 2022/03/03 14:46:44 by fmonbeig         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:07:53 by fmonbeig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,26 @@ int main( void )
 	iter(tab2, ii, printTab);
 	return (0);
 }
+
+// class Awesome
+// {
+// 	public:
+// 		Awesome( void ) : _n( 42 ) { return; }
+// 		int get( void ) const { return this->_n; }
+// 	private:
+// 		int _n;
+// };
+
+// std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
+// template< typename T >
+// void print( T & x ) { std::cout << x << std::endl; return; }
+
+// int main() {
+// int tab[] = { 0, 1, 2, 3, 4 };
+// Awesome tab2[5];
+
+// iter( tab, 5, print );
+// iter( tab2, 5, print );
+
+// return 0;
+// }
