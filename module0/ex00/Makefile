@@ -6,7 +6,7 @@
 #    By: fmonbeig <fmonbeig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 14:48:02 by fmonbeig          #+#    #+#              #
-#    Updated: 2022/02/01 15:05:36 by fmonbeig         ###   ########.fr        #
+#    Updated: 2022/04/13 14:12:58 by fmonbeig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,7 @@ FLAGS			= -Wall -Werror -Wextra -std=c++98 -pedantic
 
 OBJ_DIR			= ./obj/
 
-SRC_LIST		= 	Zombie.cpp \
-					newZombie.cpp \
-					randomChump.cpp \
+SRC_LIST		= 	megaphone.cpp
 
 SRC				= $(SRC_LIST)
 
